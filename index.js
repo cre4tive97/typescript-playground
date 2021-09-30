@@ -90,3 +90,64 @@ function 결혼가능성(월소득, 집보유여부, 매력점수) {
     }
 }
 console.log(결혼가능성(100, true, "상"));
+// Narrowing & Assertion
+// if문 등으로 Narrowing 가능..
+function 내함수(x) {
+    if (typeof x === "string") {
+        return x + "1";
+    }
+    else {
+        return x + 1;
+    }
+}
+function 내함수1(x) {
+    var arr = [];
+    // arr[0] = x; << 에러
+    if (typeof x === "number") {
+        arr[0] = x;
+    }
+}
+function 내함수2(x) {
+    var arr = [];
+    arr[0] = x; //< type assertion
+}
+// assertion 문법의 용도
+// 1. Narrowing 할 때 쓴다.
+var 사람 = "kim";
+//사람 as number; << 에러. 이런거 하면 안댐
+// 타입을 확정짓는 용도이지, 타입을 변경하는 용도가 아님.
+//2. 무슨 타입이 들어올 지 100% 확실할 때 써야함.
+내함수2("123"); // < 이런식으로 타입에러를 잡아주지 않음. 버그 추적이 불가능함
+function 변환기(data) {
+    return JSON.parse(data);
+}
+var jake = 변환기('{"name":"kim"}');
+// 이 함수에 자료를 입력하면 as 키워드로 T라는 타입을 하나 붙여준다.
+// 5분숙제
+function 숫자정리(arr) {
+    var result = [];
+    arr.forEach(function (a) {
+        if (typeof a === "string") {
+            result.push(parseFloat(a));
+        }
+        else {
+            result.push(a);
+        }
+    });
+    return result;
+}
+console.log(숫자정리([1, "2", "3", 4, "5"]));
+var 철수쌤 = { subject: "math" };
+var 영희쌤 = { subject: ["science", "english"] };
+var 민수쌤 = { subject: ["science", "art", "korean"] };
+function 마지막과목(x) {
+    if (typeof x.subject === "string") {
+        return x.subject;
+    }
+    else if (Array.isArray(x.subject)) {
+        return x.subject[x.subject.length - 1];
+    }
+}
+console.log(마지막과목(철수쌤));
+console.log(마지막과목(영희쌤));
+console.log(마지막과목(민수쌤));
