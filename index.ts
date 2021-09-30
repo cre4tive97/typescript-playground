@@ -60,3 +60,61 @@ let 학교: {
 };
 학교.score[4] = false;
 학교.friend = ["Lee", 학교.teacher];
+
+function 함수(x: number): number {
+  return x * 2;
+}
+
+function 함수1(x: number): void {
+  //   return x % 2;  void는 return 없이만 가능, 함수 내부에 return이 있는지 체크할 때 쓰면 굿
+}
+
+//함수();   < 타입지정한 함수는 파라미터를 무조건 넣어야 함.
+
+function 함수3(x?: number): number {
+  return x + 2;
+}
+함수3(); // 함수 파라미터에 ?를 붙이면 파라미터가 있어도 되고 없어도 됨.
+// ?의 원리
+// 변수?:number === 변수 : number | undefined
+// undefined가 합쳐진 union type 이라고 생각하면 된다
+
+function 함수4(x: number | string) {
+  // console.log(x + 3);  << 에러
+}
+// number | string 이라는 number도 아니고 string도 아닌 새로운 타입이라서 + 연산을 할 수 없음.
+// 이걸 가능하게 하려면 Narrowing 로 타입을 확정해야한다.
+
+//5분숙제
+
+function 홍길동(x?: string): void {
+  if (x) {
+    console.log(`안녕하세요 ${x}`);
+  } else {
+    console.log("이름이 없습니다");
+  }
+}
+
+function 자릿수(x: string | number): number {
+  return x.toString().length;
+}
+
+function 결혼가능성(
+  월소득: number,
+  집보유여부: boolean,
+  매력점수: string
+): string | void {
+  let score: number = 0;
+  score += 월소득;
+  if (집보유여부 === true) {
+    score += 500;
+  }
+  if (매력점수 === "상") {
+    score += 100;
+  }
+  if (score >= 600) {
+    return "결혼가능";
+  }
+}
+
+console.log(결혼가능성(100, true, "상"));
