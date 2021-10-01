@@ -231,6 +231,42 @@ myfunc(자료.name);
 var 자료2 = {
     name: "kim",
 };
-// as const는..
-//1. 타입을 Object의 value로 바꿔준다. (타입을 'kim' 으로 바꿔줌)
-//2. Object 안에 있는 모든 속성을 readonly로 바꿔준다. (변경하면 에러남)
+var 문자숫자 = function (a) {
+    return 10;
+};
+var 회원정보 = {
+    name: "kim",
+    age: 30,
+    plusOne: function (x) {
+        return x + 1;
+    },
+    changeName: function () {
+        console.log("안녕");
+    },
+};
+회원정보.plusOne(1);
+회원정보.changeName();
+var cutZero = function (a) {
+    if (a.indexOf("0") === 0) {
+        var result = a.replace("0", "");
+        return result;
+    }
+    else {
+        return a;
+    }
+};
+console.log(cutZero("0124"));
+console.log(cutZero("00120"));
+console.log(cutZero("10120"));
+var removeDash = function (a) {
+    if (a.indexOf("-") !== -1) {
+        return parseFloat(a.replace(/-/gi, ""));
+    }
+};
+console.log(removeDash("120-4128-1928"));
+console.log(removeDash("123-12-445-2-"));
+var newFunction = function (a, cutZero, removeDash) {
+    var resultCutZero = cutZero(a);
+    console.log(removeDash(resultCutZero));
+};
+newFunction("010-1111-2222", cutZero, removeDash);
