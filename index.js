@@ -173,3 +173,64 @@ var user2 = {
     email: "asdfkl@gmail.com",
     isMinor: true,
 };
+//
+//
+//
+// Literal Types
+// 더 엄격한 타입 지정 가능해짐
+var 이름3;
+이름3 = "kim";
+// 이름3 = "park"; << 에러
+var 숫자3;
+숫자3 = 123;
+// 숫자3 = 456; << 에러
+var 접니다;
+접니다 = "대머리";
+접니다 = "솔로";
+// 접니다 = "잘생김"; < 에러
+// 왜쓰는가?
+// 변수에 어떤 데이터가 들어올지 더 엄격하게 관리 가능 (버그 방지)
+// 자동완성
+function hello(a) {
+    return 1;
+}
+hello("hello");
+// hello("hi"); << 에러
+function 가위바위보(a) {
+    return [a];
+}
+console.log(가위바위보("보"));
+// const 변수의 한계
+// 재할당 불가능함
+// Literal Types 를 사용하면, const 변수와 유사하게 사용 가능함
+var 나;
+나 = "대머리";
+나 = "솔로";
+// literal types 의 장점. 자료를 여러개 저장가능한 const 변수 느낌?
+// literal types 의 문제점
+var 자료 = {
+    name: "kim",
+};
+자료.name; // <= "kim";
+function myfunc(a) { }
+myfunc("kim");
+//myfunc(자료.name); << 에러.
+// 왜 에러가 뜨냐면..
+// myfunc(a: "kim") 에서 파라미터를 보면
+// a: "kim"  이건 자료를 지정한게 아니라 "kim" 이라는 타입을 지정한것임.
+// 그래서 자료.name 이건 타입이 :string 이라서 에러가 나는거임
+//해결책
+//1. 오브젝트에 타입지정을 한다
+var 자료1 = {
+    name: "kim",
+};
+myfunc(자료1.name); // < 잘됨
+//2. asserstion 문법으로 타입을 강제한다
+myfunc(자료.name);
+//3. as const
+var 자료2 = {
+    name: "kim",
+};
+// as const는..
+//1. 타입을 Object의 value로 바꿔준다. (타입을 'kim' 으로 바꿔줌)
+//2. Object 안에 있는 모든 속성을 readonly로 바꿔준다. (변경하면 에러남)
