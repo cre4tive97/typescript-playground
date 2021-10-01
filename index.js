@@ -151,3 +151,25 @@ function 마지막과목(x) {
 console.log(마지막과목(철수쌤));
 console.log(마지막과목(영희쌤));
 console.log(마지막과목(민수쌤));
+var 동물 = "lion";
+var 동물1 = { name: "poppy", age: 4 };
+var 여친 = {
+    name: "엠버",
+};
+// & 연산자로 Object Type 또한 합칠 수 있음 ( &연산자로 object type extend )
+var position = { x: 10, y: 20 }; // 잘됨
+var 숙제테스트 = {
+    size: 123,
+    position: [1, 2],
+};
+var user1 = {
+    name: "kim",
+    phone: 0801209141,
+    email: "adklfj@gmail.com",
+};
+var user2 = {
+    name: "park",
+    phone: 12314,
+    email: "asdfkl@gmail.com",
+    isMinor: true,
+};
