@@ -1,6 +1,4 @@
 // 오브젝트에 타입지정하려면 interface 문법도 있음
-// Class 문법이랑 비슷한 느낌임
-var 네모 = { color: "red", width: 100 };
 var 학생 = { name: "kim" };
 var 선생 = { name: "kim", age: 20 };
 var 선생1 = { name: "kim", age: 30 };

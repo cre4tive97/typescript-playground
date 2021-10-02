@@ -6,7 +6,7 @@ interface Square {
 }
 // Class 문법이랑 비슷한 느낌임
 
-let 네모: Square = { color: "red", width: 100 };
+// let 네모: Square = { color: "red", width: 100 };
 
 interface Student {
   name: String;
